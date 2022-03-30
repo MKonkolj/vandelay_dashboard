@@ -1,0 +1,45 @@
+.background {
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 20, 30, 0.7), rgba(30, 0, 75, 0.5)), url("../images/login_background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    place-items: center;
+}
+
+.form-wrapper {
+    background-color: var(--off-white);
+    padding: 3rem 2rem 2rem 2rem;
+    border-radius: 10px;
+    width: min(300px, 80%);
+    box-shadow: var(--shadow-dark)
+}
+
+.logo {
+    width: max-content;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+}
+
+input {
+    padding: .5rem .8rem;
+    width: 100%;
+    background-color: var(--off-white);
+    box-shadow: var(--shadow-light)
+}
+
+button {
+    width: 100%;
+    background-color: var(--yellow);
+    border: none;
+    padding: .5rem .8rem;
+    border-radius: 2px;
+    line-height: 1.4;
+}
