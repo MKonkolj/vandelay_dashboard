@@ -6,8 +6,10 @@ if(!isset($_POST["submit"])) {
 }
 
 // include classes
+include "classes/connection.php";
 include "classes/login-model.class.php";
 include "classes/login-controller.class.php";
+
 // check username and pass
 // add errors to $error
 // relocate to login or index
