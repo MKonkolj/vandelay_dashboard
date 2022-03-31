@@ -4,20 +4,48 @@ class LoginController extends LoginModel {
     private $email;
     private $pass;
 
-    public function __construct($email, $pass) {
+    public function __construct(string $email, string $pass) {
         $this->email = $email;
         $this->pass = $pass;
     }
 
     // login user
-    public function login($email, $pass) {
-        
-    }
-    // get data from model
-    // check if password is good
-    public function checkPassword($pass) {
+    public function login() {
+        // check email and password in db
+        $this->checkEmailPass();
 
+        // login user
+        $user_data = $this->getUserData($this->email);
+        session_start();
+        $_SESSION["user_id"] = $user_data[0]["id"];
+        $_SESSION["user_firstname"] = $user_data[0]["firstname"];
+        $_SESSION["user_lastname"] = $user_data[0]["lastname"];
+        $_SESSION["position_id"] = "2";
+
+        header("location: ../index.php");
     }
+
+
+    private function checkEmailPass() {
+        $emailPass = $this->getEmailPass($this->email);
+
+        // no such email in database
+        if(empty($emailPass)) {
+            header("location: ../login.php?error=emailnotfound");
+            die();
+        }
+
+        $hashed_pass = $emailPass[0]["password"];
+
+        // passwords dont match
+        if(!password_verify($this->pass, $hashed_pass)) {
+            header("location: ../login.php?error=passwordincorrect");
+            die();
+        }
+    }
+
+
+
     // redirects
     // get user data from model
     // set session storage

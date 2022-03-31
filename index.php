@@ -1,8 +1,12 @@
 <?php 
 // redirect to login if not logged in
 session_start();
-if(!isset($_SESSION["loggedIn"])) {
+if(!isset($_SESSION["user_id"])) {
     header("location: ./login.php?error=notloggedin");
+} elseif ($_SESSION["position_id"] !== "1") {
+    session_unset();
+    session_destroy();
+    header("location: ./login.php?error=accessdenied");
 }
 ?>
 <!DOCTYPE html>
@@ -15,5 +19,9 @@ if(!isset($_SESSION["loggedIn"])) {
 </head>
 <body>
     <h1>Bashboard</h1>
+    <a href="logout.php">Log out</a>
+    <?php
+    var_dump($_SESSION);
+    ?>
 </body>
 </html>

@@ -25,6 +25,13 @@ body {
     height: 100vh;
 }
 
+.error {
+    color: red;
+    font-size: 11px;
+    margin-right: auto;
+    padding-left: 1rem;
+}
+
 input {
     border: transparent;
     transition: box-shadow 200ms;
