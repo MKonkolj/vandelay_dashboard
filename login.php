@@ -11,10 +11,12 @@
 <body>
     <div class="background">
         <div class="form-wrapper">
-            <form action="<?php $_SERVER["PHP_SELF"] ?>">
+            <form action="includes\login.inc.php" method="POST">
                 <img class="logo" src="assets/images/Vandelay_logo_small.png" alt="Vandeley logo">
                 <input type="text" name="email" placeholder="Email">
+                <p class="error"><?php echo $error["email"] ?? "" ?></p>
                 <input type="password" name="password" placeholder="Password">
+                <p class="error"><?php echo $error["password"] ?? "" ?></p>
                 <button type="submit">LOG IN</button>
             </form>
         </div>
