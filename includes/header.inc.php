@@ -26,8 +26,8 @@ if(!isset($_SESSION["user_id"])) {
                 <div class="navigation shadow">
                     <img class="logo" src="./assets/images/Vandelay_logo_small.png" alt="Vandelay logo">
                     <div class="nav-bar">
-                        <div class="nav-item"><a href="">Home</a></div>
-                        <div class="nav-item"><a href="">Employees</a></div>
+                        <div class="nav-item"><a href="index.php">Home</a></div>
+                        <div class="nav-item"><a href="employees.php">Employees</a></div>
                     </div>
                     <div class="user-bar">
                         <div class="user-name"><?php

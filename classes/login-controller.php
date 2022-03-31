@@ -24,6 +24,8 @@ class LoginController extends LoginModel {
         $_SESSION["position_id"] = $user_data[0]["position_id"];
         $_SESSION["position_name"] = $user_data[0]["position_name"];
 
+
+
         header("location: ../index.php");
     }
 
