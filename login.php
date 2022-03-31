@@ -16,7 +16,7 @@ if(isset($_SESSION["user_id"])) {
     <title>Vandelay login</title>
 </head>
 <body>
-    <div class="background">
+    <div class="background grid-center">
         <div class="form-wrapper">
             <form action="includes\login.inc.php" method="POST">
                 <img class="logo" src="assets/images/Vandelay_logo_small.png" alt="Vandeley logo">
