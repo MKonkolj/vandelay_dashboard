@@ -1,3 +1,10 @@
+<?php 
+// redirect to index if loggedin
+session_start();
+if(!isset($_SESSION["loggedin"])) {
+    header("location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +22,8 @@
                 <img class="logo" src="assets/images/Vandelay_logo_small.png" alt="Vandeley logo">
                 <input type="text" name="email" placeholder="Email">
                 <p class="error"><?php echo $error["email"] ?? "" ?></p>
-                <input type="password" name="password" placeholder="Password">
-                <p class="error"><?php echo $error["password"] ?? "" ?></p>
+                <input type="password" name="pass" placeholder="Password">
+                <p class="error"><?php echo $error["pass"] ?? "" ?></p>
                 <button type="submit">LOG IN</button>
             </form>
         </div>

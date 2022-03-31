@@ -1,6 +1,6 @@
 <?php 
 
-class DBConnect {
+class Connection {
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
