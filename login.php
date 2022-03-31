@@ -1,7 +1,7 @@
 <?php 
 // redirect to index if loggedin
 session_start();
-if(!isset($_SESSION["loggedin"])) {
+if(isset($_SESSION["loggedin"])) {
     header("location: index.php");
 }
 ?>
