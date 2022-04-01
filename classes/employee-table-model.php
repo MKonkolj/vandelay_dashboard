@@ -17,21 +17,4 @@ class EmployeeTableModel extends Connection {
 
         return $result;
     }
-
-    protected function addEmployee() {
-        
-    }
-
-    protected function updateEmployee() {
-
-    }
-
-    protected function deleteEmployee($employee_id) {
-        $stmt = $this->connect()->prepare("DELETE FROM employees WHERE employee_id=$employee_id");
-        $stmt->execute([$employee_id]);
-        $result = $stmt->fetchAll();
-
-        return $result;
-    }
-
 }

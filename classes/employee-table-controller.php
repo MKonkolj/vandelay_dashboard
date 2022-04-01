@@ -22,7 +22,7 @@ class EmployeeTableController extends EmployeeTableModel {
                 }
                 echo "<td>" . $cell . "</td>";
             }
-            echo "<td><a href='./includes/update.inc.php?" . $row["employee_id"] . "'>Edit</td>";
+            echo "<td><a href='./update.php?" . $row["employee_id"] . "'>Edit</td>";
             echo "<td><a href='./includes/delete.inc.php?" . $row["employee_id"] . "'>Delete</a></td>";
             echo "</tr>";
         }
