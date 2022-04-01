@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION["user_id"])) {
     header("location: ./login.php?error=notloggedin");
 } elseif ($_SESSION["position_id"] !== "1") {
+    // deny access if the logged user is not an administrator
     session_unset();
     session_destroy();
     header("location: ./login.php?error=accessdenied");
