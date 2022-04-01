@@ -14,6 +14,8 @@ $pass = $_POST["pass"];
 include "../classes/connection.php";
 include "../classes/login-model.php";
 include "../classes/login-controller.php";
+include "../classes/user-model.php";
+include "../classes/user-controller.php";
 
 // instaciate LoginController
 $login = new LoginController($email, $pass);
