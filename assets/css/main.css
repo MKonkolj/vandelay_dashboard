@@ -23,6 +23,7 @@
 body {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -39,9 +40,14 @@ body {
     padding-left: 1rem;
 }
 
-input {
+input,
+select {
     border: transparent;
     transition: box-shadow 200ms;
+    box-shadow: var(--shadow-light);
+    padding: .5rem .8rem;
+    width: 100%;
+    background-color: var(--off-white);
 }
 
 input:focus,

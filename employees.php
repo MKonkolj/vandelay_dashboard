@@ -3,7 +3,7 @@ include "./includes/header.inc.php"
 ?>
 <main>
     <div class="main-page shadow">
-    <h4>Lista zaposlenih</h4>
+    <?php include "./includes/employees.inc.php" ?>
     </div>
 </main>
 <?php 
