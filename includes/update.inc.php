@@ -8,9 +8,10 @@ if(isset($_POST["submit"])) {
     $position = intval($_POST["position"]);
     $salary = intval($_POST["salary"]);
     $email = $_POST["email"];
+    $id = intval($_SERVER["QUERY_STRING"]);
     
     $create = new UserModel();
-    $create->createEmployeeInDB($firstname, $lastname, $position, $salary, $email);
+    $create->updateEmployeeInDB($firstname, $lastname, $position, $salary, $email, $id);
 } else {
     header("location: login.php");
 }

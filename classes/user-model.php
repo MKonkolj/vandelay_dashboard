@@ -25,5 +25,20 @@ class UserModel extends Connection {
         $stmt->bindParam(":salary", $salary, PDO::PARAM_INT);
         $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->execute();
+
+        header("location: ../employees.php");
+    }
+
+    public function updateEmployeeInDB(string $firstname,string $lastname,int $position,int $salary,string $email, int $id) {
+
+        $stmt = $this->connect()->prepare("UPDATE employees SET firstname=:firstname, lastname=:lastname, position_id=:position, salary=:salary, email=:email WHERE employee_id=)");
+        $stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+        $stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+        $stmt->bindParam(":position", $position, PDO::PARAM_INT);
+        $stmt->bindParam(":salary", $salary, PDO::PARAM_INT);
+        $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        header("location: ../employees.php");
     }
 }

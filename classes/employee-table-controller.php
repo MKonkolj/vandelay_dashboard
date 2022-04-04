@@ -29,4 +29,29 @@ class EmployeeTableController extends EmployeeTableModel {
         }
         echo "</tbody></table>";
     }
+
+    public function createSelectTable($selected_id) {
+        $selectedArray = $this->getSelectedEmployeeArray($selected_id);
+
+        echo "<table><thead>";
+        echo "<th>First Name</th>";
+        echo "<th>Last Name</th>";
+        echo "<th>Position</th>";
+        echo "<th>Salary</th>";
+        echo "<th colspan='2'></th>";
+        echo "</thead><tbody>";
+        foreach($selectedArray as $row) {
+            echo "<tr>";
+            foreach($row as $key => $cell) {
+                if($key == "employee_id"){
+                    continue;
+                }
+                echo "<td>" . $cell . "</td>";
+            }
+            echo "<td><a href='./update.php?" . $row["employee_id"] . "'>Edit</td>";
+            echo "<td><a href='./includes/delete.inc.php?" . $row["employee_id"] . "'>Delete</a></td>";
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
+    }
 }

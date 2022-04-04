@@ -7,19 +7,36 @@ include "./classes/employee-table-controller.php";
 $employeeTable = new EmployeeTableController();
 $positions = $employeeTable->getPositions();
 
-?>
+if(isset($_POST["positionSelect"])) {
+    session_status();
+    $_SESSION["employeeTableView"] = $_POST["positionSelect"];
+}
 
-<form action="<?php $_SERVER["PHP_SELF"] ?>">
+?>
+<form class="table-select-form" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
 <select name="positionSelect" class="sort-select">
-    <option value="all">All</option>
+    <option value="">All</option>
     <?php 
     foreach($positions as $position) {
-        echo "<option value='". $position["id"] ."'>". $position["position_name"] ."</option>";
+        if(!empty($_SESSION["employeeTableView"]) && $_SESSION["employeeTableView"] == $position["id"]) {
+            echo "<option value='". $position["id"] ."' selected='selected'>". $position["position_name"] ."</option>";
+        } else {
+            echo "<option value='". $position["id"] ."'>". $position["position_name"] ."</option>";
+        }
     }
     ?>
 </select>
-<button class="employees-button" type="submit">Refresh</button>
-<button><a href="create.php">Add employee</a></button>
+<button class="employees-button" type="submit" name="submit">Refresh</button>
 </form>
+<button><a href="create.php">Add employee</a></button>
 
-<div class="table-container"><?php $employeeTable->createTable() ?></div>
+<div class="table-container"><?php 
+
+if(!empty($_SESSION["employeeTableView"])) {
+    $employeeTable->createSelectTable($_SESSION["employeeTableView"]);
+} else {
+    $employeeTable->createTable();
+}
+
+
+?></div>
