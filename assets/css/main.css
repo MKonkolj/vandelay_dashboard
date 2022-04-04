@@ -38,6 +38,7 @@ body {
     font-size: 11px;
     margin-right: auto;
     padding-left: 1rem;
+    line-height: 0;
 }
 
 input,

@@ -22,7 +22,32 @@ class UserController extends UserModel {
         header("location: ../employees.php?employeedeleted");
     }
 
-    public function checkInputs($firstname, $lastname, $position, $salary, $email) {
-        
+    public function addInputError($input, $message) {
+        $this->errors[$input] = $message;
+    }
+
+    public function checkName($name, $field = "name") {
+        $name = trim($name);
+        if(empty($name)) {
+            $this->addInputError($field, "Field can't be empty");
+        } else if(!preg_match('/[a-zA-Z]/', $name)) {
+            $this->addInputError($field, "Can only contain numbers");
+        }
+    }
+
+    public function checkSalary($salary) {
+        $salary = trim($salary);
+        if(empty($salary)) {
+            $this->addInputError("salary", "Field can't be empty");
+        } else if(!preg_match('/[0-9]/', $salary)) {
+            $this->addInputError("salary", "Can only contain numbers");
+        }
+    }
+
+    public function checkEmail($email) {
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->addInputError("email", "Must be a valid email");
+        }
     }
 }
