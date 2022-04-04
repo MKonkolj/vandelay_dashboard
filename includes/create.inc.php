@@ -9,7 +9,8 @@ if(isset($_POST["submit"])) {
     $salary = intval($_POST["salary"]);
     $email = $_POST["email"];
     
-    $create = new UserModel();
+    $create = new UserController();
+    $create->checkInputs($firstname, $lastname, $position, $salary, $email);
     $create->createEmployeeInDB($firstname, $lastname, $position, $salary, $email);
 } else {
     header("location: login.php");

@@ -3,6 +3,7 @@
 class UserController extends UserModel {
 
     private $user_data;
+    public $errors;
 
     public function setUser($email) {
 
@@ -19,5 +20,9 @@ class UserController extends UserModel {
     public function deleteEmployee($id) {
         $this->deleteEmployeeFromDB($id);      
         header("location: ../employees.php?employeedeleted");
+    }
+
+    public function checkInputs($firstname, $lastname, $position, $salary, $email) {
+        
     }
 }
