@@ -20,4 +20,4 @@ class UserController extends UserModel {
         $this->deleteEmployeeFromDB($id);      
         header("location: ../employees.php?employeedeleted");
     }
-} 
+}

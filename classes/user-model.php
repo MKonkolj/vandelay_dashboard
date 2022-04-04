@@ -15,4 +15,15 @@ class UserModel extends Connection {
         $stmt = $this->connect()->prepare("DELETE FROM employees WHERE employee_id = ?");
         $stmt->execute([$id]);
     }
+
+    public function createEmployeeInDB(string $firstname,string $lastname,int $position,int $salary,string $email) {
+
+        $stmt = $this->connect()->prepare("INSERT INTO employees(firstname, lastname, position_id, salary, email) VALUES (:firstname, :lastname, :position, :salary, :email)");
+        $stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+        $stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+        $stmt->bindParam(":position", $position, PDO::PARAM_INT);
+        $stmt->bindParam(":salary", $salary, PDO::PARAM_INT);
+        $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }

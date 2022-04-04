@@ -13,6 +13,7 @@ class EmployeeTableController extends EmployeeTableModel {
         echo "<th>Last Name</th>";
         echo "<th>Position</th>";
         echo "<th>Salary</th>";
+        echo "<th colspan='2'></th>";
         echo "</thead><tbody>";
         foreach($this->employeeArray as $row) {
             echo "<tr>";

@@ -10,7 +10,7 @@ $positions = $employeeTable->getPositions();
 ?>
 
 <form action="<?php $_SERVER["PHP_SELF"] ?>">
-<select name="positionSelect">
+<select name="positionSelect" class="sort-select">
     <option value="all">All</option>
     <?php 
     foreach($positions as $position) {
@@ -18,8 +18,8 @@ $positions = $employeeTable->getPositions();
     }
     ?>
 </select>
-<button type="submit">Refresh</button>
-</form>
+<button class="employees-button" type="submit">Refresh</button>
 <button><a href="create.php">Add employee</a></button>
+</form>
 
-<?php $employeeTable->createTable() ?>
+<div class="table-container"><?php $employeeTable->createTable() ?></div>
