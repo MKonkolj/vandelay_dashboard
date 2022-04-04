@@ -15,10 +15,16 @@ if(isset($_POST["submit"])) {
     $create->checkName($lastname, "lastname");
     $create->checkSalary($salary);
     $create->checkEmail($email);
+
     
     if(!empty($create->errors)) {
         session_start();
         $_SESSION["create_form_errors"] = $create->errors;
+        $_SESSION["create_form_values"] = ["firstname" => $firstname, 
+                                            "lastname" => $lastname, 
+                                            "position" => $position, 
+                                            "salary" => $salary, 
+                                            "email" => $email];
         header("location: ../create.php?error=fieldsnotgood");
     } else {
         $create->createEmployeeInDB($firstname, $lastname, $position, $salary, $email);
