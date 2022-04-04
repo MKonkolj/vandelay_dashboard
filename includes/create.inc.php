@@ -1,6 +1,7 @@
 <?php 
 include "../classes/connection.php";
 include "../classes/user-model.php";
+include "../classes/user-controller.php";
 
 if(isset($_POST["submit"])) {
     $firstname = $_POST["firstname"];
