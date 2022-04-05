@@ -1,4 +1,5 @@
-<?php 
+<?php
+ 
 include "./includes/header.inc.php"
 ?>
 <main>

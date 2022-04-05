@@ -1,4 +1,5 @@
 <?php 
+
 include "./includes/header.inc.php";
 include "./classes/connection.php";
 include "./classes/employee-table-model.php";
@@ -34,7 +35,7 @@ $employee = array_values($employee);
         </select>
         <input type="number" name="salary" placeholder="Salary" value="<?php echo $employee[0]["salary"] ?>">
         <p class="error"><?php echo $_SESSION["update_form_errors"]["salary"] ?? ""?></p>
-        <button type="submit" name="submit">Create</button>
+        <button type="submit" name="submit">Update</button>
         <?php 
         // if administrator selected - show password field
         // hash pass before posting

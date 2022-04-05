@@ -1,4 +1,12 @@
 <?php 
+// redirect to login if not logged in
+if(!isset($_SESSION)) {
+    session_start();
+}
+if(!isset($_SESSION["user_id"])) {
+    header("location: ../login.php?error=notloggedin");
+}
+
 include "../classes/connection.php";
 include "../classes/user-model.php";
 include "../classes/user-controller.php";
@@ -29,5 +37,5 @@ if(isset($_POST["submit"])) {
         header("location: ../employees.php?employeeadded");
     }
 } else {
-    header("location: login.php");
+    header("location: ../login.php?error=formnotsubmitted");
 }

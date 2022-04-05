@@ -1,4 +1,11 @@
 <?php 
+// redirect to login if not logged in
+if(!isset($_SESSION)) {
+    session_start();
+}
+if(!isset($_SESSION["user_id"])) {
+    header("location: ../login.php?error=notloggedin");
+}
 
 class UserModel extends Connection {
 

@@ -1,9 +1,10 @@
 <?php 
-include "../classes/connection.php";
-include "../classes/user-model.php";
-include "../classes/user-controller.php";
 
 if(isset($_POST["submit"])) {
+    include "../classes/connection.php";
+    include "../classes/user-model.php";
+    include "../classes/user-controller.php";
+
     $firstname = trim($_POST["firstname"]);
     $lastname = trim($_POST["lastname"]);
     $position = trim(intval($_POST["position"]));
@@ -32,5 +33,5 @@ if(isset($_POST["submit"])) {
     }
 
 } else {
-    header("location: login.php");
+    header("location: ../login.php?error=formnotsubmitted");
 }
