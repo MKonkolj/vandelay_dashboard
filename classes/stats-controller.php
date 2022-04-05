@@ -9,14 +9,13 @@ if(!isset($_SESSION["user_id"])) {
 
 class StatsController extends StatsModel {
 
-    public $numOfEmployees;
-    public $avgSalary;
-    public $employeesPerPosition;
+    public string $numOfEmployees;
+    public string $avgSalary;
+    public array $employeesPerPosition;
 
     public function __construct() {
         $this->numOfEmployees = $this->getNumberOfEmployees();
         $this->avgSalary = $this->getaverageSalary();
         $this->employeesPerPosition = $this->getemployeesPerPosition();
     }
-
 }

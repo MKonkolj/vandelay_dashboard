@@ -18,7 +18,7 @@ class UserModel extends Connection {
         return $result;
     }
 
-    public function deleteEmployeeFromDB($id) {
+    public function deleteEmployeeFromDB(int $id) : void {
         $stmt = $this->connect()->prepare("DELETE FROM employees WHERE employee_id = ?");
         $stmt->execute([$id]);
     }

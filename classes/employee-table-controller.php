@@ -14,7 +14,7 @@ class EmployeeTableController extends EmployeeTableModel {
         $this->employeeArray = $this->getEmployeeArray();
     }
 
-    public function createTable() {
+    public function createTable() : void{
         echo "<table><thead>";
         echo "<th>First Name</th>";
         echo "<th>Last Name</th>";
@@ -37,7 +37,7 @@ class EmployeeTableController extends EmployeeTableModel {
         echo "</tbody></table>";
     }
 
-    public function createSelectTable($selected_id) {
+    public function createSelectTable(string $selected_id) : void {
         $selectedArray = $this->getSelectedEmployeeArray($selected_id);
 
         echo "<table><thead>";

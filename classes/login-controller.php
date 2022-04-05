@@ -17,7 +17,7 @@ class LoginController extends LoginModel {
     }
 
     // login user
-    public function login() {
+    public function login() : void {
         // check email and password in db
         $this->checkEmailPass();
 
@@ -30,7 +30,7 @@ class LoginController extends LoginModel {
     }
 
 
-    private function checkEmailPass() {
+    private function checkEmailPass() : void {
         $emailPass = $this->getEmailPass($this->email);
 
         // no such email in database

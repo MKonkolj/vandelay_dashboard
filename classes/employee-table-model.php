@@ -17,7 +17,7 @@ class EmployeeTableModel extends Connection {
         return $result;
     }
 
-    protected function getSelectedEmployeeArray($selected_id) : array {
+    protected function getSelectedEmployeeArray(string $selected_id) : array {
         $stmt = $this->connect()->prepare("SELECT employee_id, firstname, lastname, position_name, salary FROM employees LEFT JOIN positions ON employees.position_id=positions.id WHERE position_id = ? ORDER BY salary DESC");
         $stmt->execute([$selected_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

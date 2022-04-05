@@ -10,7 +10,7 @@ if(!isset($_SESSION["user_id"])) {
 class LoginModel extends Connection {
 
     // getEmail and pass
-    protected function getEmailPass($email) : array {
+    protected function getEmailPass(string $email) : array {
         $stmt = $this->connect()->prepare("SELECT email, password FROM employees WHERE email = ?");
         $stmt->execute([$email]);
         $result = $stmt->fetchAll();

@@ -152,8 +152,8 @@ main {
 .graph-column {
     width: 80px;
     background-color: var(--yellow);
-    font-size: 2rem;
-    padding: 1rem;
+    font-size: 1.5rem;
+    padding: .5rem .875rem;
     border-bottom: 2px solid var(--red);
 }
 

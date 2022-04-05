@@ -12,7 +12,7 @@ class UserController extends UserModel {
     private $user_data;
     public $errors;
 
-    public function setUser($email) {
+    public function setUser(string $email) : void {
 
         $user_data = $this->getUserData($email);
     
@@ -24,16 +24,16 @@ class UserController extends UserModel {
         $_SESSION["position_name"] = $user_data[0]["position_name"];
     }
 
-    public function deleteEmployee($id) {
+    public function deleteEmployee(string $id) : void {
         $this->deleteEmployeeFromDB($id);      
         header("location: ../employees.php?employeedeleted");
     }
 
-    public function addInputError($input, $message) {
+    public function addInputError(string $input, string $message) : void {
         $this->errors[$input] = $message;
     }
 
-    public function checkName($name, $field = "name") {
+    public function checkName(string $name, string $field = "name") : void {
         $name = trim($name);
         if(empty($name)) {
             $this->addInputError($field, "Field can't be empty");
@@ -42,7 +42,7 @@ class UserController extends UserModel {
         }
     }
 
-    public function checkSalary($salary) {
+    public function checkSalary(int $salary) : void {
         $salary = trim($salary);
         if(empty($salary)) {
             $this->addInputError("salary", "Field can't be empty");
@@ -51,7 +51,7 @@ class UserController extends UserModel {
         }
     }
 
-    public function checkEmail($email) {
+    public function checkEmail(string $email) : void {
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->addInputError("email", "Must be a valid email");

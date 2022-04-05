@@ -8,12 +8,12 @@ if(!isset($_SESSION["user_id"])) {
 }
 
 class Connection {
-    private $host = "localhost";
+    private string $host = "localhost";
     private $user = "root";
     private $pass = "";
     private $database = "vandelay";
     
-    protected function connect() {
+    protected function connect() : PDO {
         try {
             $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->database;
             $pdo = new PDO($dsn, $this->user, $this->pass);
