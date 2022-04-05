@@ -15,14 +15,23 @@ $stats = new StatsController();
 
 ?>
 
-<h4>Ukupno zaposlenih: <?php echo $stats->numOfEmployees ?></h4>
-<h4>Prosečna plata: <?php echo $stats->avgSalary ?></h4>
-<h4>Zaposlenih po poziciji: </h4><br><?php 
-foreach($stats->employeesPerPosition as $row) {
-    ?> <div> <?php
-    foreach($row as $key => $value) {
-        ?> <span><?php echo $value ?></span> <?php
-    }
-    ?> </div> <?php
-}
-?>
+<div class="stat-container">
+    <div class="stat employees-sum">
+        <p class="stat-title">Number of employees:</p>
+        <p class="stat-number"><?php echo $stats->numOfEmployees ?></p>
+    </div>
+    <div class="stat average-salary">
+        <p class="stat-title">Average salary:</p>
+        <p class="stat-number"><?php echo $stats->avgSalary ?></p>
+    </div>
+</div>
+<div class="graph-container">
+    <?php foreach($stats->employeesPerPosition as $position) { ?>
+        <div class="graph-column-container">
+            <div class="graph-column" style="height: calc(100vh / <?php echo $stats->numOfEmployees ?> * <?php echo $position["num_employees"] ?>)"><?php echo $position["num_employees"] ?></div>
+            <p><?php echo $position["position_name"] ?></p>
+            <?php $position["num_employees"] ?>
+        </div>
+    <?php } ?>
+</div>
+</div>
