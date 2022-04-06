@@ -6,6 +6,7 @@
     --font-bold: 700;
 
     --yellow: #fbd827;
+    --dark-yellow: #ebbb10;
     --red: #e40b1e;
     --off-white: #faf9f4;
 
@@ -42,7 +43,8 @@ body {
 }
 
 input,
-select {
+select,
+textarea {
     border: transparent;
     transition: box-shadow 200ms;
     box-shadow: var(--shadow-light);
@@ -51,9 +53,16 @@ select {
     background-color: var(--off-white);
 }
 
+textarea {
+    resize: none;
+}
+
 input:focus,
 input:focus-visible,
-input:focus-within {
+input:focus-within,
+textarea:focus,
+textarea:focus-visible,
+textarea:focus-within {
     outline: none;
     border: transparent;
     box-shadow: var(--shadow-dark);

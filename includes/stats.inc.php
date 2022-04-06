@@ -34,4 +34,3 @@ $stats = new StatsController();
         </div>
     <?php } ?>
 </div>
-</div>

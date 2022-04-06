@@ -46,4 +46,12 @@ class UserModel extends Connection {
 
         header("location: ../employees.php");
     }
+
+    public function getAllEmployees() : array {
+        $stmt = $this->connect()->prepare("SELECT employee_id, firstname, lastname, position_id, position_name FROM employees JOIN positions ON employees.position_id = positions.id");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
 }

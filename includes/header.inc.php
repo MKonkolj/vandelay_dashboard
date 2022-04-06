@@ -24,6 +24,14 @@ if(!isset($_SESSION["user_id"])) {
                     <div class="nav-bar">
                         <div class="nav-item"><a href="index.php">Home</a></div>
                         <div class="nav-item"><a href="employees.php">Employees</a></div>
+                        <div class="nav-item">
+                            <button class="dropdown-button" id="dropdownBtn" onclick="showDropdown()">Projects</button>
+                            <div class="dropdown-content" id="dropdown">
+                                <a href="./project-list.php">Project list</a>
+                                <a href="./create-project.php">Create project</a>
+                                <a href="./create-task.php">Create task</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="user-bar">
                         <div class="user-name"><?php
@@ -35,3 +43,18 @@ if(!isset($_SESSION["user_id"])) {
                     </div>
                 </div>
             </header>
+            <script defer>
+                function showDropdown(){
+                    document.getElementById("dropdown").classList.toggle("show");
+                }
+
+                window.onclick = function(e) {
+                    if (!e.target.matches('.dropdown-button')) {
+                    const dropdown = document.getElementById("dropdown");
+                        if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                        }
+                    }
+                }
+
+            </script>
