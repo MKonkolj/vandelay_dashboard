@@ -12,13 +12,17 @@ $employeesObj = new UserModel();
 $employees = $employeesObj->getAllEmployees();
 
 if(isset($_POST["submit"])) {
-    $projectName = $_POST["project_name"];
-    $tasks->checkName($projectName);
+    $task_name = trim($_POST["task_name"]);
+    $project_id = trim($_POST["project_id"]);
+    $employee_id = trim($_POST["employee_id"]);
+    $deadline = trim($_POST["deadline"]);
+    $tasks->checkName($task_name);
+    $tasks->checkTask($task_name);
+    $tasks->checkDeadline($deadline);
 
     if(empty($tasks->errors)) {
-        $tasks->setProject($projectName);
-        header("location: projects.php");
-        die();
+        $tasks->setTask($task_name, $project_id, $employee_id, $deadline);
+        header("location: project-list.php?taskadded");
     }
 }
 
@@ -28,17 +32,17 @@ if(isset($_POST["submit"])) {
     <h2 class="form-title">Create Task</h2>
     <form class="main-form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
 
-        <select name="employee">
+        <select name="project_id">
             <?php 
             foreach($projects as $project) {
                 echo "<option value='". $project["project_id"] ."'>". $project["project_name"] ."</option>";
             }
             ?>
         </select>
-        <textarea name="task" placeholder="Task..." cols="30" rows="5"></textarea>
-        <p class="error"><?php echo $_SESSION["create_task_errors"]["task"] ?? ""?></p>
+        <textarea name="task_name" placeholder="Task..." cols="30" rows="5"></textarea>
+        <p class="error"><?php echo $tasks->errors["task_name"] ?? ""?></p>
 
-        <select name="employee">
+        <select name="employee_id">
             <?php 
             foreach($employees as $employee) {
                 echo "<option value='". $employee["employee_id"] ."'>". $employee["firstname"] ." ". $employee["lastname"] ." - ". $employee["position_name"] . "</option>";
@@ -47,7 +51,7 @@ if(isset($_POST["submit"])) {
         </select>
 
         <input type="date" name="deadline" value="<?php echo date('Y-m-d'); ?>">
-        <p class="error"><?php echo $_SESSION["create_task_errors"]["salary"] ?? ""?></p>
+        <p class="error"><?php echo $tasks->errors["deadline"] ?? ""?></p>
 
         <button type="submit" name="submit">Create task</button>
         <?php 

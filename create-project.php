@@ -17,7 +17,7 @@ if(isset($_POST["submit"])) {
 
     if(empty($tasks->errors)) {
         $tasks->setProject($projectName);
-        header("location: projects.php");
+        header("location: project-list.php?projectadded");
         die();
     }
 }

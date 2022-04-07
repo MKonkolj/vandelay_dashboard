@@ -27,4 +27,21 @@ class TaskController extends TaskModel {
             $this->addInputError("project_name", "Can only contain letters and numbers");
         }
     }
+
+    public function checkTask(string $task) : void {
+        $task = trim($task);
+        if(empty($task)) {
+            $this->addInputError("task_name", "Field can't be empty");
+        } else if(!preg_match('/[a-zA-Z0-9]/', $task)) {
+            $this->addInputError("task_name", "Can only contain letters and numbers");
+        }
+    }
+
+    public function checkDeadline(string $deadline) : void {
+        $deadline = strtotime($deadline);
+        $today = strtotime("today");
+        if($deadline < $today) {
+            $this->addInputError("deadline", "Deadline set in the past");
+        }
+    }
 }

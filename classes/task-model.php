@@ -22,16 +22,18 @@ class TaskModel extends Connection {
         $stmt->execute([$project_name]);
     }
 
-    protected function getTasksByProject(int $project_id) : array {
-        $stmt = $this->connect()->prepare("SELECT * FROM tasks WHERE project_id = ?");
-        $stmt->execute([$project_id]);
+    public function getAllTasks() : array {
+        $stmt = $this->connect()->prepare("SELECT task_name, project_name, firstname, lastname, deadline FROM tasks 
+        LEFT JOIN projects ON tasks.project_id=projects.project_id 
+        LEFT JOIN employees ON tasks.employee_id=employees.employee_id ");
+        $stmt->execute();
         $result = $stmt->fetchAll();
         
         return $result;
     }
 
-    protected function setTask(string $task_name, int $project_id, int $employee_id, string $deadline) : void {
-        $stmt = $this->connect()->prepare("INSERT INTO tasks VALUES ? ? ? ?");
+    public function setTask(string $task_name, int $project_id, int $employee_id, string $deadline) {
+        $stmt = $this->connect()->prepare("INSERT INTO tasks(task_name, project_id, employee_id, deadline) VALUES (?, ?, ?, ?)");
         $stmt->execute([$task_name, $project_id, $employee_id, $deadline]);
     }
 }
