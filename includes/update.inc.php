@@ -15,7 +15,7 @@ if(isset($_POST["submit"])) {
     $firstname = trim($_POST["firstname"]);
     $lastname = trim($_POST["lastname"]);
     $position = intval($_POST["position"]);
-    $salary = intval(trim($_POST["salary"]));
+    $salary = (float)(trim($_POST["salary"]));
     $id = intval($_SERVER["QUERY_STRING"]);
     
     $update = new UserController();

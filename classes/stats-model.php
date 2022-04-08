@@ -17,7 +17,7 @@ class StatsModel extends Connection {
         return intval($result[0]["numEmployees"]);
     }
 
-    protected function getaverageSalary() : int {
+    protected function getaverageSalary() : float {
         $stmt = $this->connect()->prepare("SELECT avg(salary) as avgSalary FROM employees");
         $stmt->execute([]);
         $result = $stmt->fetchAll();

@@ -23,24 +23,24 @@ class UserModel extends Connection {
         $stmt->execute([$id]);
     }
 
-    public function createEmployeeInDB(string $firstname,string $lastname,int $position,int $salary,string $email) {
+    public function createEmployeeInDB(string $firstname, string $lastname, int $position, float $salary, string $email) : void {
 
         $stmt = $this->connect()->prepare("INSERT INTO employees(firstname, lastname, position_id, salary, email) VALUES (:firstname, :lastname, :position, :salary, :email)");
         $stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
         $stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
         $stmt->bindParam(":position", $position, PDO::PARAM_INT);
-        $stmt->bindParam(":salary", $salary, PDO::PARAM_INT);
+        $stmt->bindParam(":salary", $salary, PDO::PARAM_STR);
         $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->execute();
     }
 
-    public function updateEmployeeInDB(string $firstname,string $lastname,int $position,int $salary, int $id) {
+    public function updateEmployeeInDB(string $firstname,string $lastname,int $position,float $salary, int $id) : void {
 
         $stmt = $this->connect()->prepare("UPDATE employees SET firstname=:firstname, lastname=:lastname, position_id=:position, salary=:salary WHERE employee_id=:id");
         $stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
         $stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
         $stmt->bindParam(":position", $position, PDO::PARAM_INT);
-        $stmt->bindParam(":salary", $salary, PDO::PARAM_INT);
+        $stmt->bindParam(":salary", $salary, PDO::PARAM_STR);
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
 

@@ -8,8 +8,8 @@ if(!isset($_SESSION["user_id"])) {
 } 
 
 class TaskController extends TaskModel {
-    public $projects;
-    public $errors;
+    public array $projects;
+    public array $errors;
 
     public function __construct() {
         $this->projects = $this->getProjects();

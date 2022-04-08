@@ -5,13 +5,13 @@ include "task-model.php";
 include "task-controller.php";
 
 class TaskView extends TaskController {
-    private $tasks;
+    private array $tasks;
 
     public function __construct() {
         $this->tasks = $this->getAllTasks();
     }
 
-    public function createTaskTable() {
+    public function createTaskTable() : void {
 
         echo 
         "<table>

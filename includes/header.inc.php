@@ -2,7 +2,7 @@
 // redirect to login if not logged in
 session_start();
 if(!isset($_SESSION["user_id"])) {
-    header("location: ./login.php?error=notloggedin");
+    header("location: ./login.php");
 }
 ?>
 <!DOCTYPE html>

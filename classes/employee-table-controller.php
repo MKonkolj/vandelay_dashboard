@@ -14,7 +14,7 @@ class EmployeeTableController extends EmployeeTableModel {
         $this->employeeArray = $this->getEmployeeArray();
     }
 
-    public function createTable() : void{
+    public function createTable() : void {
         echo "<table><thead>";
         echo "<th>First Name</th>";
         echo "<th>Last Name</th>";

@@ -9,8 +9,7 @@ if(!isset($_SESSION["user_id"])) {
 
 class UserController extends UserModel {
 
-    private $user_data;
-    public $errors;
+    public array $errors;
 
     public function setUser(string $email) : void {
 
@@ -42,7 +41,7 @@ class UserController extends UserModel {
         }
     }
 
-    public function checkSalary(int $salary) : void {
+    public function checkSalary(float $salary) : void {
         $salary = trim($salary);
         if(empty($salary)) {
             $this->addInputError("salary", "Field can't be empty");
